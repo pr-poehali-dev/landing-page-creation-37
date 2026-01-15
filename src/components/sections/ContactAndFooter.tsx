@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
@@ -5,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useToast } from '@/hooks/use-toast';
 
 interface ContactAndFooterProps {
   privacyOpen: boolean;
@@ -14,6 +16,63 @@ interface ContactAndFooterProps {
 }
 
 const ContactAndFooter = ({ privacyOpen, setPrivacyOpen, offerOpen, setOfferOpen }: ContactAndFooterProps) => {
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+  const [description, setDescription] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!name || !contact || !description) {
+      toast({
+        title: 'Ошибка',
+        description: 'Пожалуйста, заполните все поля',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/a7f87c0b-e44f-48c0-9800-33dab9877998', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          contact,
+          description,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        toast({
+          title: 'Заявка отправлена!',
+          description: 'Мы свяжемся с вами в ближайшее время',
+        });
+        setName('');
+        setContact('');
+        setDescription('');
+      } else {
+        throw new Error(data.error || 'Ошибка отправки');
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Не удалось отправить заявку. Попробуйте позже.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <section id="contact" className="py-16 bg-secondary text-white">
@@ -27,15 +86,29 @@ const ContactAndFooter = ({ privacyOpen, setPrivacyOpen, offerOpen, setOfferOpen
             </p>
 
             <Card className="p-8 bg-white text-foreground">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-semibold mb-2">Ваше имя</label>
-                  <Input placeholder="Иван Иванов" className="w-full" />
+                  <Input 
+                    placeholder="Иван Иванов" 
+                    className="w-full" 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    disabled={isSubmitting}
+                    required
+                  />
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold mb-2">Email или Telegram</label>
-                  <Input placeholder="ivan@company.ru или @username" className="w-full" />
+                  <Input 
+                    placeholder="ivan@company.ru или @username" 
+                    className="w-full" 
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}
+                    disabled={isSubmitting}
+                    required
+                  />
                 </div>
 
                 <div>
@@ -43,11 +116,15 @@ const ContactAndFooter = ({ privacyOpen, setPrivacyOpen, offerOpen, setOfferOpen
                   <Textarea 
                     placeholder="Опишите вашу ситуацию: тип контракта, суммы, с какой страной работаете, есть ли уже вопросы от банка..."
                     className="w-full min-h-32"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    disabled={isSubmitting}
+                    required
                   />
                 </div>
 
-                <Button size="lg" className="w-full text-lg">
-                  Получить первичный разбор
+                <Button size="lg" className="w-full text-lg" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Отправка...' : 'Получить первичный разбор'}
                 </Button>
 
                 <div className="text-xs text-muted-foreground text-center mt-4">
