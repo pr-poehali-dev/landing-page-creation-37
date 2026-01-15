@@ -4,8 +4,14 @@ import Icon from '@/components/ui/icon';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { useState } from 'react';
 
 const Index = () => {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-white sticky top-0 z-50 shadow-sm">
@@ -766,6 +772,49 @@ const Index = () => {
                 <Button size="lg" className="w-full text-lg">
                   Получить первичный разбор
                 </Button>
+
+                <div className="text-xs text-muted-foreground text-center mt-4">
+                  <p>
+                    Нажимая кнопку, вы соглашаетесь с{' '}
+                    <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
+                      <DialogTrigger asChild>
+                        <button className="text-primary hover:underline font-semibold">
+                          обработкой персональных данных
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-3xl max-h-[80vh]">
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl">Политика конфиденциальности</DialogTitle>
+                        </DialogHeader>
+                        <ScrollArea className="h-[60vh] pr-4">
+                          <div className="space-y-4 text-sm text-muted-foreground">
+                            <p>Здесь будет текст политики конфиденциальности...</p>
+                            <p>Этот документ описывает, как мы собираем, используем и защищаем ваши персональные данные.</p>
+                          </div>
+                        </ScrollArea>
+                      </DialogContent>
+                    </Dialog>
+                    {' '}и{' '}
+                    <Dialog open={offerOpen} onOpenChange={setOfferOpen}>
+                      <DialogTrigger asChild>
+                        <button className="text-primary hover:underline font-semibold">
+                          договором оферты
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-3xl max-h-[80vh]">
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl">Договор оферты</DialogTitle>
+                        </DialogHeader>
+                        <ScrollArea className="h-[60vh] pr-4">
+                          <div className="space-y-4 text-sm text-muted-foreground">
+                            <p>Здесь будет текст договора оферты...</p>
+                            <p>Этот документ содержит условия предоставления услуг.</p>
+                          </div>
+                        </ScrollArea>
+                      </DialogContent>
+                    </Dialog>
+                  </p>
+                </div>
 
                 <div className="space-y-2 text-sm text-muted-foreground text-center">
                   <p className="flex items-center justify-center gap-2">
