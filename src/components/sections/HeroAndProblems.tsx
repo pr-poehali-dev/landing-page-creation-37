@@ -9,7 +9,7 @@ const HeroAndProblems = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h1 className="text-5xl lg:text-6xl font-bold text-secondary leading-tight">
-              Сохраняю ваши деньги там, где другие теряют их на штрафах по валютному контролю
+              Сохраняю ваши деньги там, где другие теряют их на штрафах по валютному законодательству
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               Экспертиза валютных контрактов и документов с учётом 173‑ФЗ, 181‑И, 402‑ФЗ и свежей судебной практики по ст. 15.25 КоАП РФ.
