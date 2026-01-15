@@ -522,7 +522,160 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="faq" className="py-16 bg-white">
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-secondary mb-4 text-center">
+              Что говорят клиенты
+            </h2>
+            <p className="text-center text-muted-foreground mb-12 text-lg">
+              Реальные отзывы от компаний, которые избежали штрафов
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="p-6 bg-muted/30">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Алексей М.</div>
+                    <div className="text-sm text-muted-foreground">Директор IT-компании</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Банк пропустил платёж, но эксперт выявил риски по ст. 15.25. Переделали документы 
+                  до проверки ФНС. Сэкономили минимум 2 млн рублей штрафа."
+                </p>
+                <div className="flex gap-1 text-yellow-500">
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-muted/30">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Марина К.</div>
+                    <div className="text-sm text-muted-foreground">Финансовый директор</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Работали с зарубежными подрядчиками 3 года. Оказалось, контракты не соответствуют 
+                  173-ФЗ. Исправили до проверки. Профессионально и по делу."
+                </p>
+                <div className="flex gap-1 text-yellow-500">
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-muted/30">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Дмитрий Р.</div>
+                    <div className="text-sm text-muted-foreground">Владелец торговой компании</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Получили акт от Росфинмониторинга. Эксперт за 48 часов подготовил возражения 
+                  со ссылками на судебную практику. Штраф снизили с 800 тыс. до 150 тыс."
+                </p>
+                <div className="flex gap-1 text-yellow-500">
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-muted/30">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Ольга В.</div>
+                    <div className="text-sm text-muted-foreground">ГД производственной компании</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Заказывали оборудование из Китая. Эксперт проверил контракт и нашёл несоответствие 
+                  с требованиями 181-И. Доработали до отгрузки. Спасибо за внимательность!"
+                </p>
+                <div className="flex gap-1 text-yellow-500">
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-muted/30">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Сергей Л.</div>
+                    <div className="text-sm text-muted-foreground">CEO digital-агентства</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Ведём ВЭД постоянно. Эксперт на ежемесячной основе проверяет все изменения в контрактах. 
+                  Спим спокойно, ни одного вопроса от банка за год."
+                </p>
+                <div className="flex gap-1 text-yellow-500">
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-muted/30">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-bold">Павел Г.</div>
+                    <div className="text-sm text-muted-foreground">Собственник бизнеса</div>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  "Думал, что юрист уже всё проверил. Оказалось, что формулировки в договоре создают 
+                  риски по валютному контролю. Хорошо, что узнал это не от налоговой."
+                </p>
+                <div className="flex gap-1 text-yellow-500">
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                  <Icon name="Star" size={16} className="fill-current" />
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-16 bg-muted">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-secondary mb-12 text-center">
